@@ -40,7 +40,7 @@ public class LoginPage {
     public String getFailureMessage() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement message = wait.until(
-                ExpectedConditions.visibilityOfElementLocated(By.className("error-message-container"))
+                ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h3[data-test='error']"))
         );
         return message.getText();
     }

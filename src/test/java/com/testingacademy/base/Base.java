@@ -7,11 +7,13 @@ import org.testng.annotations.BeforeMethod;
 
 public class Base {
     protected WebDriver driver;
+    private static final String BASE_URL = "https://www.saucedemo.com/";
 
     @BeforeMethod
     public void beforeMethod() {
         driver = new ChromeDriver();
-        driver.get("https://www.saucedemo.com/");
+        driver.manage().window().maximize();
+        driver.get(BASE_URL);
     }
 
     @AfterMethod
