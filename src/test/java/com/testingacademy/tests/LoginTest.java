@@ -1,6 +1,7 @@
 package com.testingacademy.tests;
 
 import com.testingacademy.base.Base;
+import com.testingacademy.pages.CartPage;
 import com.testingacademy.pages.InventoryPage;
 import com.testingacademy.pages.LoginPage;
 import com.testingacademy.pages.ProductPage;
@@ -106,5 +107,18 @@ public class LoginTest extends Base {
         ProductPage productPage = new ProductPage(driver);
 
         Assert.assertEquals(productPage.getProductTitle(), "Sauce Labs Backpack");
+    }
+
+    @Test
+    public void clickCart() {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("standard_user", "secret_sauce");
+
+        CartPage cartPage = new CartPage(driver);
+        cartPage.openCart();
+        cartPage.clickCheckout();
+        cartPage.enterFirstName("Aditi");
+        cartPage.enterLastName("Soni");
+        cartPage.enterPostalCode("560092");
     }
 }

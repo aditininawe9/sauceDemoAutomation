@@ -16,8 +16,8 @@ public class Base {
         driver.get(BASE_URL);
     }
 
-    @AfterMethod
-    public void afterMethod() {
-        driver.quit();
-    }
+//    @AfterMethod
+//    public void afterMethod() {
+//        driver.quit();
+//    }
 }
