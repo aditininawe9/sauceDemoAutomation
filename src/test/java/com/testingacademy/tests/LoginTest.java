@@ -3,6 +3,7 @@ package com.testingacademy.tests;
 import com.testingacademy.base.Base;
 import com.testingacademy.pages.InventoryPage;
 import com.testingacademy.pages.LoginPage;
+import com.testingacademy.pages.ProductPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -81,5 +82,29 @@ public class LoginTest extends Base {
         List<Double> expectedList = new ArrayList<>(originalString);
         Collections.sort(expectedList,Collections.reverseOrder());
         Assert.assertEquals(expectedList, sortedList);
+    }
+
+    @Test
+    public void testAddToCartAndRemoveFromCart() {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("standard_user", "secret_sauce");
+
+        InventoryPage inventoryPage = new InventoryPage(driver);
+        inventoryPage.clickAddToCart("Sauce Labs Backpack");
+
+        inventoryPage.removeFromCart("Sauce Labs Backpack");
+    }
+
+    @Test
+    public void openDetailPage() {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("standard_user", "secret_sauce");
+
+        InventoryPage inventoryPage = new InventoryPage(driver);
+        inventoryPage.openProduct("Sauce Labs Backpack");
+
+        ProductPage productPage = new ProductPage(driver);
+
+        Assert.assertEquals(productPage.getProductTitle(), "Sauce Labs Backpack");
     }
 }

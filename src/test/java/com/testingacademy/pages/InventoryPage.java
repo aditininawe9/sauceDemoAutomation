@@ -47,4 +47,21 @@ public class InventoryPage {
         return prices;
     }
 
+    public void clickAddToCart(String productName) {
+        String productId = productName.toLowerCase().replace(" ","-");
+        By addToCart = By.id("add-to-cart-"+productId);
+        driver.findElement(addToCart).click();
+    }
+
+    public void removeFromCart(String productName) {
+        String productId = productName.toLowerCase().replace(" ","-");
+        By removeFromCart = By.id("remove-"+productId);
+        driver.findElement(removeFromCart).click();
+    }
+
+    public void openProduct(String productName) {
+        By product = By.xpath("//div[text()='"+productName+"']");
+        driver.findElement(product).click();
+    }
+
 }
